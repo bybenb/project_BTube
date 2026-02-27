@@ -4,10 +4,10 @@ import threading
 import os
 from pathlib import Path
 
-from src.core.downloader import DownloadManager
-from src.utils.settings import SettingsManager
-from src.ui.components.download_card import DownloadCard
-from src.ui.components.settings_frame import SettingsFrame
+from core.downloader import DownloadManager
+from utils.settings import SettingsManager
+from ui.components.download_card import DownloadCard
+from ui.components.settings_frame import SettingsFrame
 
 # Configuração do tema
 ctk.set_appearance_mode("dark")
@@ -76,7 +76,7 @@ class BTubeApp(ctk.CTk):
         
         subtitle = ctk.CTkLabel(
             logo_frame,
-            text="powered by KCorp",
+            text="downloader de vídeos",
             font=ctk.CTkFont(size=12),
             text_color="gray"
         )

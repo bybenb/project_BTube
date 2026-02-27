@@ -1,3 +1,4 @@
+# src/ui/components/download_card.py
 import customtkinter as ctk
 import time
 

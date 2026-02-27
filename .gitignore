@@ -6,4 +6,7 @@ __pycache__
 test_btube.py
 mkdir.py
 KCorp_modules
+BTube.spec
+dist/
+build/
 *.pyc
