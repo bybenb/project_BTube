@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTube Pro - Downloader de Vídeos Profissional</title>
+    <link rel="stylesheet" href="beleza.css">
+</head>
+<body>
+    <!-- Header com navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-text">BTube</span>
+                <span class="logo-badge">PRO</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Recursos</a>
+                <a href="#pricing">Preços</a>
+                <a href="#download">Download</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="#pricing" class="btn btn-primary">Comprar Agora</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Baixe Vídeos de <span class="highlight">Qualquer Site</span></h1>
+                <p class="subtitle">O downloader mais rápido e confiável. Suporta YouTube, Vimeo, Dailymotion e 1000+ sites.</p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn btn-large btn-primary">Começar Agora</a>
+                    <a href="#features" class="btn btn-large btn-outline">Ver Recursos</a>
+                </div>
+                <div class="trust-badges">
+                    <span>⭐ 4.9/5 (1.200+ avaliações)</span>
+                    <span>🔒 Pagamento Seguro</span>
+                    <span>🚀 Download Imediato</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/screenshot1.png" alt="BTube App Interface"  >
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Tudo que você precisa em um downloader</h2>
+            <p class="section-subtitle">Recursos profissionais para downloads sem limites</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Velocidade Máxima</h3>
+                    <p>Downloads até 5x mais rápidos com tecnologia de aceleração proprietária</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>1000+ Sites</h3>
+                    <p>YouTube, Vimeo, Facebook, Instagram, TikTok e muito mais</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Áudio MP3</h3>
+                    <p>Extraia áudio em MP3, M4A, FLAC ou WAV com qualidade original</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">4K</div>
+                    <h3>Qualidade 4K/8K</h3>
+                    <p>Baixe vídeos em até 8K com áudio de alta qualidade</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Playlists Completas</h3>
+                    <p>Baixe playlists inteiras com um único clique</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Downloads Simultâneos</h3>
+                    <p>Até 5 downloads ao mesmo tempo sem perder velocidade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Escolha o plano ideal para você</h2>
+            <p class="section-subtitle">Licença vitalícia com atualizações gratuitas</p>
+            
+            <div class="pricing-grid">
+                <!-- Plano Free -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Básico</h3>
+                        <p class="price">Grátis</p>
+                        <p class="price-period">para sempre</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ Downloads individuais</li>
+                        <li>✓ Qualidade até 720p</li>
+                        <li>✓ 1 download por vez</li>
+                        <li>✗ Sem playlists</li>
+                        <li>✗ Sem suporte prioritário</li>
+                    </ul>
+                    <a href="#download" class="btn btn-outline btn-block">Baixar Grátis</a>
+                </div>
+                
+                <!-- Plano Pro (Recomendado) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MAIS POPULAR</div>
+                    <div class="pricing-header">
+                        <h3>BTube Pro</h3>
+                        <p class="price">$29<small>.90</small></p>
+                        <p class="price-period">licença vitalícia</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ Downloads ilimitados</li>
+                        <li>✓ Qualidade até 8K</li>
+                        <li>✓ 5 downloads simultâneos</li>
+                        <li>✓ Playlists completas</li>
+                        <li>✓ Conversão para MP3/FLAC</li>
+                        <li>✓ Suporte prioritário 24/7</li>
+                        <li>✓ Atualizações vitalícias</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-block" onclick="showPaymentModal()">Comprar Pro</a>
+                </div>
+                
+                <!-- Plano Empresarial -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Empresarial</h3>
+                        <p class="price">$99<small>.90</small></p>
+                        <p class="price-period">licença comercial</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ Tudo do Pro</li>
+                        <li>✓ Uso comercial liberado</li>
+                        <li>✓ 20 downloads simultâneos</li>
+                        <li>✓ API exclusiva</li>
+                        <li>✓ Suporte telefônico</li>
+                        <li>✓ Treinamento online</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline btn-block" onclick="showPaymentModal('enterprise')">Sob Consulta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <h2>Experimente grátis por 7 dias</h2>
+                <p>Baixe agora e teste todas as funcionalidades. Sem compromisso.</p>
+                <div class="download-buttons">
+                    <a href="#" class="btn btn-large btn-primary" onclick="downloadFree()">
+                        <span class="btn-icon">⬇️</span>
+                        Download Grátis (Windows)
+                    </a>
+                    <p class="small-text">Versão 1.0.0 • 15.2 MB • Atualizado em 2026</p>
+                </div>
+                <div class="system-requirements">
+                    <h4>Requisitos mínimos:</h4>
+                    <ul>
+                        <li>Windows 10/11 (64 bits)</li>
+                        <li>4GB RAM</li>
+                        <li>200MB de espaço</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>O BTube é seguro?</h3>
+                    <p>Sim! Nosso software é verificado por mais de 1 milhão de usuários e passa por verificações rigorosas de segurança.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Quais sites são suportados?</h3>
+                    <p>YouTube, Vimeo, Dailymotion, Facebook, Instagram, TikTok, Twitter, e mais de 1000 sites.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Como recebo a licença após comprar?</h3>
+                    <p>Imediatamente após a confirmação do pagamento, você receberá sua chave de licença por email.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Posso usar em vários computadores?</h3>
+                    <p>A licença Pro permite uso em até 3 computadores pessoais. Licença empresarial é ilimitada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Pagamento -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Finalizar Compra - BTube Pro</h2>
+            <p class="price-tag">Total: $29.90 (licença vitalícia)</p>
+            
+            <div class="payment-methods">
+                <h3>Escolha forma de pagamento:</h3>
+                <div class="payment-grid">
+                    <div class="payment-option" onclick="selectPayment('card')">
+                        <span class="payment-icon">💳</span>
+                        <span>Cartão de Crédito</span>
+                        <small>Visa, Mastercard, Amex</small>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('paypal')">
+                        <span class="payment-icon">🅿️</span>
+                        <span>PayPal</span>
+                        <small>Seguro e rápido</small>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('crypto')">
+                        <span class="payment-icon">₿</span>
+                        <span>Criptomoedas</span>
+                        <small>BTC, ETH, USDT</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-form" id="cardForm" style="display: none;">
+                <input type="text" placeholder="Nome no cartão" class="payment-input">
+                <input type="text" placeholder="Número do cartão" class="payment-input">
+                <div class="card-details">
+                    <input type="text" placeholder="MM/AA" class="payment-input small">
+                    <input type="text" placeholder="CVV" class="payment-input small">
+                </div>
+                <button class="btn btn-primary btn-block" onclick="processPayment()">Pagar $29.90</button>
+            </div>
+            
+            <div class="payment-form" id="paypalForm" style="display: none;">
+                <p>Você será redirecionado para o PayPal</p>
+                <button class="btn btn-primary btn-block" onclick="paypalRedirect()">Continuar no PayPal</button>
+            </div>
+            
+            <div class="payment-form" id="cryptoForm" style="display: none;">
+                <p>Endereço para pagamento:</p>
+                <code class="crypto-address">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</code>
+                <p class="small">Envie exatamente $29.90 em BTC. A licença será enviada após 1 confirmação.</p>
+            </div>
+            
+            <div class="secure-badge">
+                🔒 Pagamento 100% seguro - Dados criptografados
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BTube</h3>
+                    <p>powered by KCorp</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Contato</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📧</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 KCorporation. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="logica.js"></script>
+</body>
+</html>

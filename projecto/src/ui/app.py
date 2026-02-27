@@ -18,7 +18,7 @@ class BTubeApp(ctk.CTk):
         super().__init__()
         
         # Configurações da janela
-        self.title("BTube - downloader de Videos")
+        self.title("BTube")
         self.geometry("1200x700")
         self.minsize(1000, 600)
         
