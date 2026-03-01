@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 import Success from './components/Success';
 import PaymentModal from './components/PaymentModal';
 
-const stripePromise = loadStripe('pk_live_sua_chave_publica_stripe');
+const stripePromise = loadStripe('pk_live_944452176-public_key_stripe:923');
 
 function App() {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
