@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { Toaster } from 'react-hot-toast';
-import './belezas/App.css';
+import './App.css';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -51,7 +51,7 @@ function App() {
       <div className="App">
         <Toaster position="top-right" />
         <Navbar />
-        
+
         <Routes>
           <Route path="/" element={
             <main>
@@ -69,7 +69,7 @@ function App() {
 
         {showPaymentModal && (
           <Elements stripe={stripePromise}>
-            <PaymentModal 
+            <PaymentModal
               plan={selectedPlan}
               onClose={() => setShowPaymentModal(false)}
             />

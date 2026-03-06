@@ -1,4 +1,3 @@
-// server/src/index.js
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
@@ -17,9 +16,15 @@ const fastify = Fastify({
   trustProxy: true
 });
 
-// Registro de plugins
+
+
+
+
+
+
+
 await fastify.register(cors, {
-  origin: [process.env.FRONTEND_URL, 'http://localhost:2005'],
+  origin: [process.env.FRONTEND_URL, 'http://localhost:1976'],
   credentials: true
 });
 
@@ -34,12 +39,16 @@ await fastify.register(rateLimit, {
   timeWindow: '1 minute'
 });
 
-// Rotas
+
 fastify.register(authRoutes, { prefix: '/api/auth' });
 fastify.register(paymentRoutes, { prefix: '/api/payments' });
 fastify.register(licenseRoutes, { prefix: '/api/licenses' });
 
-// Rota de health check
+
+
+
+
+
 fastify.get('/health', async (request, reply) => {
   try {
     await pool.query('SELECT 1');
