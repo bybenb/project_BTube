@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const FAQ = () => {
     const questions = [
@@ -23,13 +24,24 @@ const FAQ = () => {
     return (
         <section id="faq" className="faq">
             <div className="container">
-                <h2>Perguntas <span className="highlight">Frequentes</span></h2>
+                <motion.h2
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                >Perguntas <span className="highlight">Frequentes</span></motion.h2>
                 <div className="faq-grid">
                     {questions.map((item, index) => (
-                        <div key={index} className="faq-item">
+                        <motion.div
+                            key={index}
+                            className="faq-item"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                        >
                             <h3>{item.q}</h3>
                             <p>{item.a}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

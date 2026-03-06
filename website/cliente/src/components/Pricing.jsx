@@ -1,14 +1,27 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Pricing = ({ onSelectPlan }) => {
     return (
         <section id="pricing" className="pricing">
             <div className="container">
-                <h2>Planos <span className="highlight">Simples</span></h2>
-                <p className="section-subtitle">Escolha o que melhor se adapta às suas necessidades</p>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                >
+                    <h2>Planos <span className="highlight">Simples</span></h2>
+                    <p className="section-subtitle">Escolha o que melhor se adapta às suas necessidades</p>
+                </motion.div>
 
                 <div className="pricing-grid">
-                    <div className="pricing-card">
+                    <motion.div
+                        className="pricing-card"
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                    >
                         <div className="pricing-header">
                             <h3>Básico</h3>
                             <div className="price">Grátis</div>
@@ -21,9 +34,15 @@ const Pricing = ({ onSelectPlan }) => {
                             <li style={{ textDecoration: 'line-through', opacity: 0.5 }}>PiP Mode</li>
                         </ul>
                         <button className="btn btn-outline btn-block" onClick={() => onSelectPlan('free')}>Começar Grátis</button>
-                    </div>
+                    </motion.div>
 
-                    <div className="pricing-card popular">
+                    <motion.div
+                        className="pricing-card popular"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.08 }}
+                    >
                         <div className="popular-badge">Mais Popular</div>
                         <div className="pricing-header">
                             <h3>Pro</h3>
@@ -37,7 +56,7 @@ const Pricing = ({ onSelectPlan }) => {
                             <li>Suporte Prioritário</li>
                         </ul>
                         <button className="btn btn-primary btn-block" onClick={() => onSelectPlan('pro')}>Adquirir agora</button>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
