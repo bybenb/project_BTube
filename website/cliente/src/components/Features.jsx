@@ -1,37 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { MdBlock, MdFileDownload, MdHeadset, MdWorkspacePremium, MdFlashOn, MdSecurity } from 'react-icons/md';
 
 const Features = () => {
     const features = [
         {
-            icon: '🚫',
+            icon: <MdBlock />,
             title: 'Sem Anúncios',
-            description: 'Aproveite seus vídeos favoritos sem interrupções irritantes antes, durante ou depois.'
+            description: 'Aproveite seus vídeos favoritos sem interrupções irritantes antes, durante ou depois.',
+            color: 'var(--accent-primary)'
         },
         {
-            icon: '📥',
+            icon: <MdFileDownload />,
             title: 'Downloads 4K',
-            description: 'Baixe vídeos e playlists completas em altíssima resolução para ver offline.'
+            description: 'Baixe vídeos e playlists completas em altíssima resolução para ver offline.',
+            color: 'var(--accent-blue)'
         },
         {
-            icon: '🎧',
+            icon: <MdHeadset />,
             title: 'Background Play',
-            description: 'Continue ouvindo o áudio mesmo com a tela do celular desligada ou em outro app.'
+            description: 'Continue ouvindo o áudio mesmo com a tela do celular desligada ou em outro app.',
+            color: 'var(--accent-green)'
         },
         {
-            icon: '💎',
+            icon: <MdWorkspacePremium />,
             title: 'Qualidade Premium',
-            description: 'Acesso a recursos que você só encontraria em assinaturas caras, de forma nativa.'
+            description: 'Acesso a recursos que você só encontraria em assinaturas caras, de forma nativa.',
+            color: 'var(--accent-primary)'
         },
         {
-            icon: '⚡',
+            icon: <MdFlashOn />,
             title: 'Ultra Leve',
-            description: 'Consome menos memória e bateria que o aplicativo original e o site.'
+            description: 'Consome menos memória e bateria que o aplicativo original e o site.',
+            color: 'var(--accent-blue)'
         },
         {
-            icon: '🔒',
+            icon: <MdSecurity />,
             title: 'Privacidade Total',
-            description: 'Não rastreamos seu histórico de busca ou dados pessoais. Você está no controle.'
+            description: 'Não rastreamos seu histórico de busca ou dados pessoais. Você está no controle.',
+            color: 'var(--accent-green)'
         }
     ];
 
@@ -75,9 +82,9 @@ const Features = () => {
                             key={index}
                             className="feature-card"
                             variants={itemVariants}
-                            whileHover={{ scale: 1.05, borderColor: 'var(--accent-primary)' }}
+                            whileHover={{ scale: 1.05, borderColor: feature.color }}
                         >
-                            <div className="feature-icon">{feature.icon}</div>
+                            <div className="feature-icon" style={{ color: feature.color }}>{feature.icon}</div>
                             <h3>{feature.title}</h3>
                             <p>{feature.description}</p>
                         </motion.div>

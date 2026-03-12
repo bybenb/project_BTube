@@ -1,15 +1,17 @@
 /* site/style.css */
 :root {
-    --bg-primary: #0f0f1a;
-    --bg-secondary: #1a1a2e;
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #0f0f1a;
     --text-primary: #ffffff;
-    --text-secondary: #b8b8d0;
-    --accent-primary: #89b4fa;
-    --accent-secondary: #b4befe;
-    --success: #a6e3a1;
+    --text-secondary: #a0a0b8;
+    --accent-primary: #e55a5a; /* Vermelho Logo */
+    --accent-green: #60a178;   /* Verde Logo */
+    --accent-blue: #60a1d3;    /* Azul Logo */
+    --accent-secondary: #f07a7a;
+    --success: #60a178;
     --warning: #f9e2af;
-    --error: #f38ba8;
-    --border: #2a2a3a;
+    --error: #e55a5a;
+    --border: #1e1e2e;
 }
 
 * {
@@ -177,17 +179,21 @@ body {
     margin-bottom: 30px;
 }
 
-.trust-badges {
+.trust-badges span {
     display: flex;
-    gap: 20px;
-    font-size: 14px;
-    color: var(--text-secondary);
+    align-items: center;
+    gap: 8px;
 }
+
+.icon-red { color: var(--accent-primary); }
+.icon-green { color: var(--accent-green); }
+.icon-blue { color: var(--accent-blue); }
 
 .hero-image img {
     width: 100%;
     border-radius: 10px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
 }
 
 /* Features Section */
