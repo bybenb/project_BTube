@@ -18,6 +18,9 @@ build
 *.tmp
 *.tsbuildinfo
 
+anotacoes.txt
+
+
 coverage
 public/bundle.js
 public/bundle.js.map
