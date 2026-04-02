@@ -1,4 +1,11 @@
-# src/ui/components/download_card.py
+"""
+    Ben McBridge 
+    Christhopher McBridge
+
+    McBridge Brothers
+"""
+
+
 import customtkinter as ctk
 import time
 
@@ -15,7 +22,6 @@ class DownloadCard(ctk.CTkFrame):
     def setup_ui(self, title, quality, output_path):
         self.grid_columnconfigure(1, weight=1)
         
-        # Ícone de status
         self.status_icon = ctk.CTkLabel(
             self,
             text="⏳",
@@ -23,12 +29,10 @@ class DownloadCard(ctk.CTkFrame):
         )
         self.status_icon.grid(row=0, column=0, padx=(15, 5), pady=15)
         
-        # Informações do download
         info_frame = ctk.CTkFrame(self, fg_color="transparent")
         info_frame.grid(row=0, column=1, sticky="ew", padx=5, pady=10)
         info_frame.grid_columnconfigure(0, weight=1)
         
-        # Título
         self.title_label = ctk.CTkLabel(
             info_frame,
             text=title[:50] + "..." if len(title) > 50 else title,
@@ -37,8 +41,8 @@ class DownloadCard(ctk.CTkFrame):
         )
         self.title_label.grid(row=0, column=0, sticky="w")
         
-        # Qualidade e destino
-        details_text = f"🎯 {quality} | 📁 {output_path[:30]}..."
+
+        details_text = f" {quality} | 📁 {output_path[:30]}..."
         self.details_label = ctk.CTkLabel(
             info_frame,
             text=details_text,
@@ -48,18 +52,16 @@ class DownloadCard(ctk.CTkFrame):
         )
         self.details_label.grid(row=1, column=0, sticky="w", pady=(2, 5))
         
-        # Barra de progresso
         self.progress_bar = ctk.CTkProgressBar(info_frame)
         self.progress_bar.grid(row=2, column=0, sticky="ew", pady=(5, 0))
         self.progress_bar.set(0)
         
-        # Frame para informações de velocidade
         speed_frame = ctk.CTkFrame(info_frame, fg_color="transparent")
         speed_frame.grid(row=3, column=0, sticky="ew", pady=(2, 0))
         
         self.speed_label = ctk.CTkLabel(
             speed_frame,
-            text="🚀 0 KB/s",
+            text="baixando 0 KB/s",
             font=ctk.CTkFont(size=10),
             text_color="gray"
         )
@@ -73,7 +75,9 @@ class DownloadCard(ctk.CTkFrame):
         )
         self.eta_label.pack(side="right")
         
-        # Botões de controle
+        
+        
+        
         btn_frame = ctk.CTkFrame(self, fg_color="transparent")
         btn_frame.grid(row=0, column=2, padx=(5, 15))
         
@@ -112,7 +116,6 @@ class DownloadCard(ctk.CTkFrame):
         if eta != 'N/A':
             self.eta_label.configure(text=f"⏱️ {eta}")
         
-        # Mudar ícone se estiver baixando
         if self.status == "pending":
             self.status_icon.configure(text="⬇️")
             self.status = "downloading"
@@ -121,10 +124,10 @@ class DownloadCard(ctk.CTkFrame):
         """Marca como concluído"""
         self.status_icon.configure(text="✅")
         self.progress_bar.set(1)
-        self.speed_label.configure(text="✅ Concluído!")
+        self.speed_label.configure(text=" Concluído!")
         self.eta_label.configure(text="")
         
-        # Desabilitar botões
+        
         self.pause_btn.configure(state="disabled")
         self.cancel_btn.configure(text="🗑️", command=self.remove)
     
@@ -139,12 +142,10 @@ class DownloadCard(ctk.CTkFrame):
     def pause_download(self):
         """Pausa o download"""
         self.status_icon.configure(text="⏸️")
-        # Implementar lógica de pause
     
     def cancel_download(self):
         """Cancela o download"""
         self.status_icon.configure(text="🗑️")
-        # Implementar lógica de cancelamento
     
     def remove(self):
         """Remove o card"""

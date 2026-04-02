@@ -1,4 +1,3 @@
-# src/ui/components/settings_frame.py
 import customtkinter as ctk
 from tkinter import filedialog
 import os
@@ -13,10 +12,8 @@ class SettingsFrame(ctk.CTkFrame):
     def setup_ui(self):
         """Configura a interface de configurações"""
         
-        # Configurar grid
         self.grid_columnconfigure(0, weight=1)
         
-        # Título
         title = ctk.CTkLabel(
             self,
             text="⚙️ Configurações",
@@ -24,14 +21,12 @@ class SettingsFrame(ctk.CTkFrame):
         )
         title.grid(row=0, column=0, pady=(0, 30), sticky="w")
         
-        # Frame para as configurações
         settings_container = ctk.CTkFrame(self, fg_color="gray20", corner_radius=10)
         settings_container.grid(row=1, column=0, sticky="nsew", padx=20, pady=10)
         settings_container.grid_columnconfigure(1, weight=1)
         
         current_row = 0
         
-        # Pasta de download
         ctk.CTkLabel(
             settings_container,
             text="📁 Pasta de Download:",
@@ -60,13 +55,12 @@ class SettingsFrame(ctk.CTkFrame):
         
         current_row += 1
         
-        # Separador
         ctk.CTkFrame(settings_container, height=2, fg_color="gray40").grid(
             row=current_row, column=0, columnspan=2, sticky="ew", padx=20, pady=10
         )
         current_row += 1
         
-        # Downloads simultâneos
+
         ctk.CTkLabel(
             settings_container,
             text="⬇️ Downloads Simultâneos:",
@@ -95,16 +89,14 @@ class SettingsFrame(ctk.CTkFrame):
         
         current_row += 1
         
-        # Separador
         ctk.CTkFrame(settings_container, height=2, fg_color="gray40").grid(
             row=current_row, column=0, columnspan=2, sticky="ew", padx=20, pady=10
         )
         current_row += 1
         
-        # Qualidade padrão
         ctk.CTkLabel(
             settings_container,
-            text="🎯 Qualidade Padrão:",
+            text="Qualidade Padrão:",
             font=ctk.CTkFont(size=14)
         ).grid(row=current_row, column=0, padx=20, pady=15, sticky="w")
         
@@ -120,7 +112,6 @@ class SettingsFrame(ctk.CTkFrame):
         
         current_row += 1
         
-        # Notificações
         ctk.CTkLabel(
             settings_container,
             text="🔔 Notificações:",
@@ -138,19 +129,17 @@ class SettingsFrame(ctk.CTkFrame):
         
         current_row += 1
         
-        # Separador
         ctk.CTkFrame(settings_container, height=2, fg_color="gray40").grid(
             row=current_row, column=0, columnspan=2, sticky="ew", padx=20, pady=10
         )
         current_row += 1
         
-        # Botões de ação
         buttons_frame = ctk.CTkFrame(settings_container, fg_color="transparent")
         buttons_frame.grid(row=current_row, column=0, columnspan=2, pady=20)
         
         self.save_btn = ctk.CTkButton(
             buttons_frame,
-            text="💾 Salvar Configurações",
+            text="Salvar Configurações",
             command=self.save_settings,
             height=40,
             width=200,
@@ -160,7 +149,7 @@ class SettingsFrame(ctk.CTkFrame):
         
         self.reset_btn = ctk.CTkButton(
             buttons_frame,
-            text="🔄 Restaurar Padrões",
+            text="Restaurar Padrões",
             command=self.reset_settings,
             height=40,
             width=200,
@@ -198,15 +187,16 @@ class SettingsFrame(ctk.CTkFrame):
         self.settings.set("default_quality", self.quality_var.get())
         self.settings.set("notifications", self.notifications_var.get())
         
-        # Feedback visual
-        self.save_btn.configure(text="✅ Salvo!", fg_color="green")
-        self.after(2000, lambda: self.save_btn.configure(text="💾 Salvar Configurações", fg_color="#1f538d"))
+        self.save_btn.configure(text=" Salvo!", fg_color="green")
+        self.after(2000, lambda: self.save_btn.configure(text="Salvar Configurações", fg_color="#1f538d"))
     
     def reset_settings(self):
         """Restaura configurações padrão"""
         self.settings.reset()
         
-        # Atualizar interface
+        
+        
+        
         self.folder_entry.delete(0, "end")
         self.folder_entry.insert(0, self.settings.get("download_folder", ""))
         

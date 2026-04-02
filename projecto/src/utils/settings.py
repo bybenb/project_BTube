@@ -7,7 +7,6 @@ class SettingsManager:
         self.config_dir = Path.home() / '.btube'
         self.config_file = self.config_dir / 'settings.json'
         
-        # Configurações padrão
         self.default_settings = {
             'download_folder': str(Path.home() / 'Downloads' / 'BTube'),
             'max_concurrent': 3,

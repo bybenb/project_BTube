@@ -1,4 +1,3 @@
-# run.py na raiz do projeto
 import sys
 import os
 

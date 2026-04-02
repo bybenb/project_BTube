@@ -12,14 +12,18 @@ class DownloadManager:
     def add_download(self, url, options, download_id):
         """Adiciona um novo download à fila"""
         
-        # Iniciar download em thread
+
+
         thread = threading.Thread(
             target=self._download_worker,
             args=(url, options, download_id)
         )
         thread.daemon = True
         thread.start()
-    
+
+
+
+
     def _download_worker(self, url, options, download_id):
         """Worker que executa o download"""
         
@@ -34,7 +38,8 @@ class DownloadManager:
                 except Exception as e:
                     print(f"Erro no progress hook: {e}")
         
-        # Configurar opções do yt-dlp
+
+
         ydl_opts = {
             'progress_hooks': [progress_hook],
             'outtmpl': str(Path(options['output_path']) / '%(title)s.%(ext)s'),
@@ -42,7 +47,9 @@ class DownloadManager:
             'no_warnings': True,
         }
         
-        # Configurar formato baseado na qualidade
+        
+
+        
         if options.get('quality') == 'bestaudio':
             ydl_opts.update({
                 'format': 'bestaudio/best',

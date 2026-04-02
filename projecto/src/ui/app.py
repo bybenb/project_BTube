@@ -9,53 +9,55 @@ from utils.settings import SettingsManager
 from ui.components.download_card import DownloadCard
 from ui.components.settings_frame import SettingsFrame
 
-# Configuração do tema
+
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
+
+
 
 class BTubeApp(ctk.CTk):
     def __init__(self):
         super().__init__()
         
-        # Configurações da janela
+
+
         self.title("BTube")
         self.geometry("1200x700")
         self.minsize(1000, 600)
         
-        # Gerenciadores
+
+
         self.settings = SettingsManager()
         self.download_manager = DownloadManager()
         self.download_cards = {}
         
-        # Variáveis de controle
+
+
         self.current_downloads = 0
         self.max_concurrent = self.settings.get("max_concurrent", 3)
         
-        # Configurar UI
+
         self.setup_ui()
-        
-        # Carregar configurações
         self.load_settings()
-        
-        # Bind de fechamento
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
-    
+
+
+
     def setup_ui(self):
         """Configura toda a interface"""
         
         # Grid layout
         self.grid_columnconfigure(1, weight=1)
-        self.grid_rowconfigure(0, weight=1)
         
-        # Sidebar esquerda
+        self.grid_rowconfigure(0, weight=1)        
         self.setup_sidebar()
-        
-        # Área principal
         self.setup_main_area()
-        
-        # Barra de status
         self.setup_status_bar()
     
+
+
+
+
     def setup_sidebar(self):
         """Sidebar com navegação e controles principais"""
         
@@ -63,7 +65,7 @@ class BTubeApp(ctk.CTk):
         self.sidebar.grid(row=0, column=0, sticky="nsew")
         self.sidebar.grid_rowconfigure(4, weight=1)
         
-        # Logo
+
         logo_frame = ctk.CTkFrame(self.sidebar, fg_color="transparent")
         logo_frame.pack(pady=20, padx=20, fill="x")
         
@@ -82,13 +84,16 @@ class BTubeApp(ctk.CTk):
         )
         subtitle.pack()
         
-        # Separador
+
+
+
         ctk.CTkFrame(self.sidebar, height=2, fg_color="gray20").pack(fill="x", padx=20, pady=10)
         
-        # Botões de navegação
+
+
         self.nav_downloads = ctk.CTkButton(
             self.sidebar,
-            text="📥 Downloads",
+            text="Downloads",
             command=self.show_downloads,
             anchor="w",
             fg_color="transparent",
@@ -98,7 +103,7 @@ class BTubeApp(ctk.CTk):
         
         self.nav_library = ctk.CTkButton(
             self.sidebar,
-            text="📚 Biblioteca",
+            text="Biblioteca",
             command=self.show_library,
             anchor="w",
             fg_color="transparent",
@@ -108,7 +113,7 @@ class BTubeApp(ctk.CTk):
         
         self.nav_settings = ctk.CTkButton(
             self.sidebar,
-            text="⚙️ Configurações",
+            text="Configurações",
             command=self.show_settings,
             anchor="w",
             fg_color="transparent",
@@ -116,10 +121,12 @@ class BTubeApp(ctk.CTk):
         )
         self.nav_settings.pack(pady=5, padx=20, fill="x")
         
-        # Espaçador
+        
+        
         ctk.CTkFrame(self.sidebar, fg_color="transparent").pack(expand=True, fill="both")
         
-        # Status do KCorp
+
+
         kcorp_frame = ctk.CTkFrame(self.sidebar, fg_color="transparent")
         kcorp_frame.pack(pady=20, padx=20, fill="x")
         
@@ -147,21 +154,22 @@ class BTubeApp(ctk.CTk):
         self.main_area.grid_columnconfigure(0, weight=1)
         self.main_area.grid_rowconfigure(1, weight=1)
         
-        # Header com input
+
+
+
         self.setup_input_header()
         
-        # Container para conteúdo
         self.content_container = ctk.CTkFrame(self.main_area, fg_color="transparent")
         self.content_container.grid(row=1, column=0, sticky="nsew", pady=(10, 0))
         self.content_container.grid_columnconfigure(0, weight=1)
         self.content_container.grid_rowconfigure(0, weight=1)
         
-        # Frames para cada seção
+
         self.downloads_frame = self.create_downloads_frame()
         self.library_frame = self.create_library_frame()
         self.settings_frame = ctk.CTkFrame(self.content_container, fg_color="transparent")
         
-        # Mostrar downloads por padrão
+
         self.show_downloads()
     
     def setup_input_header(self):
@@ -171,7 +179,6 @@ class BTubeApp(ctk.CTk):
         header.grid(row=0, column=0, sticky="ew", pady=(0, 10))
         header.grid_columnconfigure(0, weight=1)
         
-        # Título da seção
         self.section_title = ctk.CTkLabel(
             header,
             text="Downloads Ativos",
@@ -179,7 +186,6 @@ class BTubeApp(ctk.CTk):
         )
         self.section_title.grid(row=0, column=0, sticky="w", pady=(0, 10))
         
-        # Área de input
         input_frame = ctk.CTkFrame(header, fg_color="gray20", corner_radius=10)
         input_frame.grid(row=1, column=0, sticky="ew")
         input_frame.grid_columnconfigure(0, weight=1)
@@ -192,13 +198,12 @@ class BTubeApp(ctk.CTk):
         )
         self.url_entry.grid(row=0, column=0, sticky="ew", padx=(10, 5), pady=10)
         
-        # Frame para botões de ação
         buttons_frame = ctk.CTkFrame(input_frame, fg_color="transparent")
         buttons_frame.grid(row=0, column=1, padx=(5, 10))
         
         self.paste_btn = ctk.CTkButton(
             buttons_frame,
-            text="📋",
+            text="Colar",
             width=40,
             height=40,
             command=self.paste_url
@@ -207,7 +212,7 @@ class BTubeApp(ctk.CTk):
         
         self.clear_btn = ctk.CTkButton(
             buttons_frame,
-            text="🗑️",
+            text="Limpar",
             width=40,
             height=40,
             command=self.clear_url,
@@ -218,14 +223,13 @@ class BTubeApp(ctk.CTk):
         
         self.download_btn = ctk.CTkButton(
             buttons_frame,
-            text="⬇️ Baixar",
+            text="Baixar",
             height=40,
             command=self.start_download,
             font=ctk.CTkFont(size=14, weight="bold")
         )
         self.download_btn.pack(side="left", padx=2)
         
-        # Opções de formato (expansível)
         self.show_options = ctk.CTkCheckBox(
             input_frame,
             text="Mostrar opções avançadas",
@@ -233,12 +237,14 @@ class BTubeApp(ctk.CTk):
         )
         self.show_options.grid(row=1, column=0, columnspan=2, sticky="w", padx=10, pady=(0, 10))
         
-        # Frame de opções avançadas
+
+
         self.options_frame = ctk.CTkFrame(input_frame, fg_color="transparent")
         self.options_frame.grid(row=2, column=0, columnspan=2, sticky="ew", padx=10, pady=(0, 10))
         self.options_frame.grid_columnconfigure(1, weight=1)
         
-        # Qualidade
+
+
         ctk.CTkLabel(self.options_frame, text="Qualidade:").grid(row=0, column=0, padx=5, pady=5)
         self.quality_var = ctk.StringVar(value="Melhor qualidade")
         quality_combo = ctk.CTkComboBox(
@@ -249,7 +255,11 @@ class BTubeApp(ctk.CTk):
         )
         quality_combo.grid(row=0, column=1, padx=5, pady=5, sticky="w")
         
-        # Formato de áudio
+
+
+
+
+
         ctk.CTkLabel(self.options_frame, text="Formato áudio:").grid(row=1, column=0, padx=5, pady=5)
         self.audio_format_var = ctk.StringVar(value="mp3")
         audio_combo = ctk.CTkComboBox(
@@ -260,7 +270,8 @@ class BTubeApp(ctk.CTk):
         )
         audio_combo.grid(row=1, column=1, padx=5, pady=5, sticky="w")
         
-        # Pasta de destino
+        
+        
         ctk.CTkLabel(self.options_frame, text="Salvar em:").grid(row=2, column=0, padx=5, pady=5)
         
         folder_frame = ctk.CTkFrame(self.options_frame, fg_color="transparent")
@@ -286,7 +297,6 @@ class BTubeApp(ctk.CTk):
         )
         self.browse_btn.grid(row=0, column=1)
         
-        # Inicialmente oculto
         self.options_frame.grid_remove()
     
     def setup_status_bar(self):
@@ -298,7 +308,7 @@ class BTubeApp(ctk.CTk):
         
         self.status_label = ctk.CTkLabel(
             self.status_bar,
-            text="✅ Pronto para baixar",
+            text="Pronto para baixar",
             font=ctk.CTkFont(size=11),
             anchor="w"
         )
@@ -306,7 +316,7 @@ class BTubeApp(ctk.CTk):
         
         self.stats_label = ctk.CTkLabel(
             self.status_bar,
-            text="⬇️ 0 downloads ativos",
+            text="⬇0 downloads ativos",
             font=ctk.CTkFont(size=11)
         )
         self.stats_label.grid(row=0, column=1, padx=10)
@@ -318,15 +328,15 @@ class BTubeApp(ctk.CTk):
         frame.grid_columnconfigure(0, weight=1)
         frame.grid_rowconfigure(0, weight=1)
         
-        # Canvas com scroll para os cards
+
+
         self.downloads_canvas = ctk.CTkScrollableFrame(frame, fg_color="transparent")
         self.downloads_canvas.grid(row=0, column=0, sticky="nsew")
         self.downloads_canvas.grid_columnconfigure(0, weight=1)
         
-        # Mensagem quando vazio
         self.empty_downloads_label = ctk.CTkLabel(
             self.downloads_canvas,
-            text="✨ Nenhum download ativo\nCole uma URL para começar!",
+            text="Nenhum download ativo\nCole uma URL para começar!",
             font=ctk.CTkFont(size=16),
             text_color="gray"
         )
@@ -341,13 +351,13 @@ class BTubeApp(ctk.CTk):
         frame.grid_columnconfigure(0, weight=1)
         frame.grid_rowconfigure(1, weight=1)
         
-        # Barra de ferramentas
+
         toolbar = ctk.CTkFrame(frame, fg_color="transparent", height=40)
         toolbar.grid(row=0, column=0, sticky="ew", pady=(0, 10))
         
         self.refresh_btn = ctk.CTkButton(
             toolbar,
-            text="🔄 Atualizar",
+            text="Atualizar",
             command=self.refresh_library,
             width=100
         )
@@ -363,15 +373,20 @@ class BTubeApp(ctk.CTk):
         )
         self.open_folder_btn.pack(side="left", padx=5)
         
-        # Lista de arquivos
+        
+        
+        
+        
         self.library_list = ctk.CTkScrollableFrame(frame, fg_color="gray20", corner_radius=10)
         self.library_list.grid(row=1, column=0, sticky="nsew")
         self.library_list.grid_columnconfigure(0, weight=1)
         
-        # Mensagem quando vazio
+        
+        
+        
         self.empty_library_label = ctk.CTkLabel(
             self.library_list,
-            text="📁 Nenhum vídeo baixado ainda",
+            text="Nenhum vídeo baixado ainda",
             font=ctk.CTkFont(size=16),
             text_color="gray"
         )
@@ -417,14 +432,14 @@ class BTubeApp(ctk.CTk):
             url = self.clipboard_get()
             self.url_entry.delete(0, "end")
             self.url_entry.insert(0, url)
-            self.status_label.configure(text="📋 URL colada com sucesso!")
+            self.status_label.configure(text="URL colada com sucesso!")
         except:
             self.status_label.configure(text="❌ Não foi possível colar")
     
     def clear_url(self):
         """Limpa o campo de URL"""
         self.url_entry.delete(0, "end")
-        self.status_label.configure(text="🧹 Campo limpo")
+        self.status_label.configure(text="Campo limpo")
     
     def browse_folder(self):
         """Abre diálogo para escolher pasta"""
@@ -441,17 +456,18 @@ class BTubeApp(ctk.CTk):
         url = self.url_entry.get().strip()
         
         if not url:
-            self.status_label.configure(text="⚠️ Por favor, insira uma URL")
+            self.status_label.configure(text="⚠️ Insira uma URL, pls")
             return
         
-        # Coletar opções
         options = {
             'quality': self.get_quality_format(),
             'output_path': self.settings.get("download_folder", ""),
             'audio_format': self.audio_format_var.get() if "áudio" in self.quality_var.get().lower() else None
         }
         
-        # Criar card de download
+        
+        
+        
         download_id = f"dl_{len(self.download_cards)}"
         card = DownloadCard(
             self.downloads_canvas,
@@ -463,10 +479,10 @@ class BTubeApp(ctk.CTk):
         card.grid(row=len(self.download_cards), column=0, sticky="ew", pady=5)
         self.download_cards[download_id] = card
         
-        # Esconder mensagem vazia
+
         self.empty_downloads_label.grid_remove()
         
-        # Iniciar download em thread
+
         thread = threading.Thread(
             target=self.download_manager.add_download,
             args=(url, options, download_id)
@@ -474,9 +490,10 @@ class BTubeApp(ctk.CTk):
         thread.daemon = True
         thread.start()
         
-        # Limpar campo
+
+
         self.url_entry.delete(0, "end")
-        self.status_label.configure(text="⬇️ Download adicionado à fila!")
+        self.status_label.configure(text="Download na fila!")
         self.current_downloads += 1
         self.update_stats()
     
@@ -492,15 +509,13 @@ class BTubeApp(ctk.CTk):
     
     def refresh_library(self):
         """Atualiza a lista da biblioteca"""
-        # Limpar lista atual
+
         for widget in self.library_list.winfo_children():
             if widget != self.empty_library_label:
                 widget.destroy()
         
-        # Esconder mensagem vazia
         self.empty_library_label.grid_remove()
         
-        # Buscar arquivos
         download_folder = self.settings.get("download_folder", "")
         files_found = False
         
@@ -520,13 +535,11 @@ class BTubeApp(ctk.CTk):
         item_frame.grid(row=len(self.library_list.winfo_children()), column=0, sticky="ew", pady=2, padx=5)
         item_frame.grid_columnconfigure(1, weight=1)
         
-        # Ícone baseado na extensão
         ext = os.path.splitext(filename)[1].lower()
         icon = "🎵" if ext in ['.mp3', '.m4a', '.wav', '.flac'] else "🎬"
         
         ctk.CTkLabel(item_frame, text=icon, font=ctk.CTkFont(size=16)).grid(row=0, column=0, padx=10, pady=10)
         
-        # Nome do arquivo
         name_label = ctk.CTkLabel(
             item_frame,
             text=filename,
@@ -535,7 +548,8 @@ class BTubeApp(ctk.CTk):
         )
         name_label.grid(row=0, column=1, sticky="w", padx=5)
         
-        # Botões
+        # ===================================== Botões
+
         play_btn = ctk.CTkButton(
             item_frame,
             text="▶️",
@@ -597,7 +611,7 @@ class BTubeApp(ctk.CTk):
     def update_stats(self):
         """Atualiza estatísticas na barra de status"""
         self.stats_label.configure(
-            text=f"⬇️ {self.current_downloads} downloads ativos | 📁 {self.get_library_count()} arquivos"
+            text=f"{self.current_downloads} downloads ativos | 📁 {self.get_library_count()} arquivos"
         )
     
     def get_library_count(self):
